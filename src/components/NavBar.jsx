@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import ButtonLog from "../components/Button";
+import { Link as Anchor } from "react-router-dom";
+
 export default function NavBar() {
   const [showMenu, setShowMenu] = useState(false);
 
@@ -24,17 +26,17 @@ export default function NavBar() {
             </svg>
           </div>
           <div className="hidden md:flex items-center space-x-4">
-            <a className="text-lg font-semibold text-[#1c1c1c] hover:text-[#4f46e5]" href="#">Home</a>
-            <a className="text-lg font-semibold text-[#1c1c1c] hover:text-[#4f46e5]" href="#">Cities</a>
+            <Anchor to='#' className="text-lg font-semibold text-[#1c1c1c] hover:text-[#4f46e5]" >Home</Anchor>
+            <Anchor to='/cities' className="text-lg font-semibold text-[#1c1c1c] hover:text-[#4f46e5]" >Cities</Anchor>
             <ButtonLog onClick={() => setShowMenu(!showMenu)} />
           </div>
         </div>
 
-        {/* Menú hamburguesa */}
+        { }
         <div className={`md:hidden ${showMenu ? 'block' : 'hidden'}`}>
           <nav className="flex flex-col mt-4 space-y-4">
-            <a className="text-lg font-semibold text-[#1c1c1c] hover:text-[#4f46e5]" href="#">Home</a>
-            <a className="text-lg font-semibold text-[#1c1c1c] hover:text-[#4f46e5]" href="#">Cities</a>
+            <Anchor to ="#"className="text-lg font-semibold text-[#1c1c1c] hover:text-[#4f46e5]" href="#">Home</Anchor>
+            <Anchor to='/cities' className="text-lg font-semibold text-[#1c1c1c] hover:text-[#4f46e5]" >Cities</Anchor>
             <ButtonLog onClick={() => setShowMenu(!showMenu)} />
           </nav>
         </div>
