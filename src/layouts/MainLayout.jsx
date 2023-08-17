@@ -5,7 +5,7 @@ import { Outlet } from "react-router-dom"
 
 export default function MainLayout() {
   return (
-    <div className="w-full min-h-screen flex flex-col bg-[#ebebeb]">
+    <div className="w-full min-h-screen flex flex-col ">
       <NavBar/>
       <Outlet/>
       <Footer/>
