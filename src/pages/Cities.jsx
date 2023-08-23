@@ -1,60 +1,84 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { Link } from "react-router-dom";
+import axios from 'axios'
+import { useEffect, useState, useRef } from 'react'
+import apiUrl from '../apiUrl'
+import CardCity from '../components/CardCity'
+import ErrorCardCity from '../components/ErrorCardCity'
+import { useParams } from "react-router-dom"
 
-const Cities = () => {
-  const [cities, setCities] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [filteredCities, setFilteredCities] = useState([]);
 
-  useEffect(() => {
-    axios.get("URL_DE_LA_API_AQUI")
-      .then((response) => {
-        setCities(response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching cities:", error);
-      });
-  }, []);
+export default function Cities() {
+    const [cities, setCities] = useState([])
+    const [reEffect, setReEffect] = useState(true)
+    const [error, setError] = useState(false)
+    const text = useRef()
 
-  useEffect(() => {
-    const normalizedSearchTerm = searchTerm.toLowerCase().trim();
-    const filtered = cities.filter((city) =>
-      city.name.toLowerCase().startsWith(normalizedSearchTerm)
-    );
-    setFilteredCities(filtered);
-  }, [searchTerm, cities]);
 
-  const handleSearchChange = (event) => {
-    setSearchTerm(event.target.value);
-  };
+    useEffect(() => {
+        axios(apiUrl + 'cities')
+            .then((res) => {
+                const searchText = text.current.value.trim().toLowerCase();
+                const filteredCities = res.data.response.filter((city) => {
+                    const cityName = city.city.toLowerCase();
+                    return cityName.startsWith(searchText);
+                });
 
-  return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-semibold mb-4">Explore Cities</h1>
-      <input
-        type="text"
-        placeholder="Search cities..."
-        value={searchTerm}
-        onChange={handleSearchChange}
-        className="border p-2 mb-4"
-      />
-      {filteredCities.length === 0 ? (
-        <p>No cities match your search.</p>
-      ) : (
-        <ul className="grid grid-cols-3 gap-4">
-          {filteredCities.map((city) => (
-            <li key={city.id} className="border p-4">
-              <Link to={`/city/${city.id}`}>
-                <img src={city.photo} alt={city.name} className="w-full h-32 object-cover mb-2" />
-                <p className="font-semibold">{city.name}</p>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
-  );
-};
+                if (filteredCities.length === 0) {
+                    setError(true);
+                } else {
+                    setError(false);
+                    setCities(filteredCities);
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+                setError(true);
+            });
+    }, [reEffect]);
 
-export default Cities;
+    function handleFilter() {
+        setReEffect(!reEffect);
+    }
+
+    return (
+        <div className='w-full flex flex-col items-center mb-[200px]'>
+        <div className="bg-cover bg-center h-[50vh]  w-full flex items-center justify-center text-white text-center" 
+        style={{ backgroundImage: `url('/src/assets/viajes.jpg')` }}>
+            <div>
+                <h1 className="text-4xl font-bold mb-2">Cities</h1>
+                <p className="text-lg">Collection of the most beautiful places and experiences</p>
+            </div>
+        </div>
+            <div className="flex items-center border-b-2 border-blue-500 py-1 mt-5">
+                <input className='appearence-none bg-white border-none w-full text-black-700 mr-3 py-1 px-2 leading-tight focus:outline-none'
+                    ref={text}
+                    type="text"
+                    name="text"
+                    id="text"
+                    onChange={handleFilter}
+                    placeholder=' 🔍︎ Search your city ...'
+
+                />
+
+            </div>
+            {
+                error ? <ErrorCardCity /> :
+                    <div className='grid grid-cols-1 gap-3 mt-2 mx-[80px]
+                md:grid-cols-2 md:gap-7
+                lg:grid-cols-3 lg:gap-10
+                2xl:grid-cols-4'>
+                        {cities.map(each =>
+                            <CardCity
+                                key={each._id}
+                                src={each.photo}
+                                alt={each._id}
+                                text={each.city}
+                                textCountry={each.country}
+                                id={each._id}
+                            />
+                        )
+                        }
+                    </div>
+            }
+        </div >
+    )
+}

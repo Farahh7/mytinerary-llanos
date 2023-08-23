@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import ButtonLog from "../components/Button";
 import { Link as Anchor } from "react-router-dom";
 
@@ -24,7 +24,7 @@ export default function NavBar() {
             </svg>
           </div>
           <div className="hidden md:flex items-center space-x-4">
-            <Anchor to='#' className="text-lg font-semibold text-[#1c1c1c] hover:text-[#4f46e5]" >Home</Anchor>
+            <Anchor to='/' className="text-lg font-semibold text-[#1c1c1c] hover:text-[#4f46e5]" >Home</Anchor>
             <Anchor to='/cities' className="text-lg font-semibold text-[#1c1c1c] hover:text-[#4f46e5]" >Cities</Anchor>
             <ButtonLog onClick={() => setShowMenu(!showMenu)} />
           </div>

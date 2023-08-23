@@ -33,21 +33,30 @@ export default function Carousel({ data }) {
   }
 
   useEffect(() => {
-    const interval = setInterval(next_slide, 3000);
-    return () => clearInterval(interval);
-  }, []);
+    
+    const interval = setInterval(() => {
+      next_slide()
+    }, 5000)
+
+    
+    return () => clearInterval(interval)
+  })
 
   return (
-    <> 
+    <div className="flex justify-center items-center mt-[20px]
+    md:mt-[50px]
+    lg:w-1/2 
+    lg:mt-0">
       <Arrow direction="left" onClick={prev_slide} />
-      <div className="arrow">
-        <div className="flex flex-wrap justify-center mt-8">
-          {data.slice(counter, counterTo).map((each) => (
-            <Card key={each.id} src={each.photo} alt={each.id} text={each.city} />
+      
+      <div className="flex w-11/12 h-full flex-wrap justify-center"> 
+          {data.slice(counter, counterTo).map((each, index) => (
+          <Card key={each._id} src={each.photo} alt={each.id} text={each.city}  />
           ))}
         </div>
-      </div>
+        
+      
       <Arrow direction="right" onClick={next_slide} />
-    </>
+    </div>
   );
 }

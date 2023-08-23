@@ -1,60 +1,47 @@
 import React, { useState, useEffect } from 'react';
-import CityCard from './CityCard'; // Componente para mostrar la información de cada ciudad
+//import { getCities } from './api';
+//import CityCard from './CityCard';
+//import SearchBar from './SearchBar';
 
-const Cities = () => {
+function Cities() {
     const [cities, setCities] = useState([]);
     const [filteredCities, setFilteredCities] = useState([]);
-    const [searchTerm, setSearchTerm] = useState('');
 
     useEffect(() => {
-        // Simular la llamada a la API para obtener las ciudades (15 ciudades de ejemplo)
-        const fetchCities = async () => {
-            try {
-                const response = await fetch('URL_DE_LA_API'); // Reemplaza con la URL de la API real
-                const data = await response.json();
-                setCities(data);
-                setFilteredCities(data);
-            } catch (error) {
-                console.error('Error fetching cities:', error);
-            }
-        };
-
-        fetchCities();
+        getCities()
+            .then(cities => {
+                setCities(cities);
+                setFilteredCities(cities);
+            })
     }, []);
 
-    const handleSearch = (event) => {
-        const searchTerm = event.target.value.toLowerCase().trim();
-        setSearchTerm(searchTerm);
-
-        if (searchTerm === '') {
-            setFilteredCities(cities);
-        } else {
-            const filtered = cities.filter(city =>
-                city.name.toLowerCase().startsWith(searchTerm)
-            );
-            setFilteredCities(filtered);
-        }
-    };
+    const handleSearch = (query) => {
+        const normalizedQuery = query.toLowerCase().trim();
+        const results = cities.filter(city =>
+            city.name.toLowerCase().startsWith(normalizedQuery)
+        );
+        setFilteredCities(results);
+    }
 
     return (
         <div>
-            <input
-                type="text"
-                placeholder="Search cities..."
-                value={searchTerm}
-                onChange={handleSearch}
-            />
-            {filteredCities.length === 0 ? (
-                <p>No cities found</p>
-            ) : (
-                <div className="grid grid-cols-3 gap-4">
-                    {filteredCities.map(city => (
-                        <CityCard key={city.id} city={city} />
-                    ))}
-                </div>
-            )}
+            <SearchBar onSearch={handleSearch} />
+
+            <div className="city-list">
+                {filteredCities.length > 0 ? (
+                    filteredCities.map(city => (
+                        <CityCard
+                            key={city.id}
+                            name={city.name}
+                            image={city.image}
+                        />
+                    ))
+                ) : (
+                    <p>No cities found :(</p>
+                )}
+            </div>
         </div>
     );
-};
+}
 
 export default Cities;
