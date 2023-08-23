@@ -1,0 +1,74 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+/* Estilos para la barra de navegación */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.navbar a {
+  color: #000000;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+.navbar-right button{
+  background-color: #4F46E5;
+  color: #fff;
+}
+.navbar-left {
+  color: #000000;
+}
+
+/* Estilos para la card */
+.card {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.card h2 {
+  margin-bottom: 10px;
+}
+
+.card p {
+  color: #666;
+}
+
+.card button {
+  display: flex;
+  justify-content: space-between;
+  align-items: left;
+  background-color: #4F46E5;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.img{
+  display: flex;
+ 
+  justify-content: right;
+  align-items: center;
+  
+
+}
+/* Estilos para el carrusel */
+
+  /* Agrega aquí los estilos para el carrusel de fotos */
+
