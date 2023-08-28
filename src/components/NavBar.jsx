@@ -1,6 +1,5 @@
-import { useState } from 'react';
-import ButtonLog from "../components/Button";
-import { Link as Anchor } from "react-router-dom";
+import React, { useState } from 'react';
+import { Link as Anchor } from 'react-router-dom';
 
 export default function NavBar() {
   const [showMenu, setShowMenu] = useState(false);
@@ -26,14 +25,15 @@ export default function NavBar() {
           <div className="hidden md:flex items-center space-x-4">
             <Anchor to='/' className="text-lg font-semibold text-[#1c1c1c] hover:text-[#4f46e5]" >Home</Anchor>
             <Anchor to='/cities' className="text-lg font-semibold text-[#1c1c1c] hover:text-[#4f46e5]" >Cities</Anchor>
-            <ButtonLog onClick={() => setShowMenu(!showMenu)} />
+            <Anchor to='/signin' className="text-lg font-semibold text-white bg-[#4f46e5] py-2 px-6 rounded-md hover:bg-[#3d388d]">🙍‍♂️Login</Anchor>
           </div>
         </div>
-        <div className={`md:hidden ${showMenu ? 'block' : 'hidden'}`}>
-          <nav className="flex flex-col mt-4 space-y-4">
-            <Anchor to="#" className="text-lg font-semibold text-[#1c1c1c] hover:text-[#4f46e5]">Home</Anchor>
-            <Anchor to='/cities' className="text-lg font-semibold text-[#1c1c1c] hover:text-[#4f46e5]">Cities</Anchor>
-            <ButtonLog onClick={() => setShowMenu(!showMenu)} />
+        <div className="md:hidden">
+          <div className={`fixed inset-0 bg-gray-800 bg-opacity-50 ${showMenu ? 'block' : 'hidden'}`} onClick={() => setShowMenu(false)}></div>
+          <nav className={`fixed right-0 top-0 bg-white w-64 p-4 transform ${showMenu ? 'translate-x-0' : 'translate-x-full'} transition-transform ease-in-out duration-300`}>
+            <Anchor to="#" className="block py-2 px-4 text-lg font-semibold text-[#1c1c1c] hover:text-[#4f46e5] mb-2">Home</Anchor>
+            <Anchor to='/cities' className="block py-2 px-4 text-lg font-semibold text-[#1c1c1c] hover:text-[#4f46e5] mb-2">Cities</Anchor>
+            <Anchor to='/signin' className="block py-2 px-4 text-lg font-semibold text-[#1c1c1c] hover:text-[#4f46e5] mb-2" onClick={() => setShowMenu(false)}> 🙍‍♂️Login</Anchor>
           </nav>
         </div>
       </div>

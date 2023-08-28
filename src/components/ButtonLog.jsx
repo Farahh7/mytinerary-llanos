@@ -12,7 +12,7 @@ export default function ButtonLog({ onClick }) {
                 colors="primary:#ffffff"
                 style={{ width: '20px', height: '20px' }} 
             />
-            Login
+            Login255
         </button>
     );
 

@@ -29,10 +29,10 @@ export default function CityDetail() {
 
                 {Object.keys(city).length > 0 && (
                     <div className="text-center text-white p-5 mt-10 ">
-                        <h1 className="text-6xl font-semibold mb-3 text-white text-shadow-md bg-black">
+                        <h1 className="text-6xl font-semibold mb-3 text-white text-shadow-md bg-black bg-opacity-80">
                             {city.city}
                         </h1>
-                        <p className={`text-black bg-white text-lg mb-3 text-white text-shadow-lg ${city.smalldescription.length > 100 ? 'mt-6' : 'mt-3'}`}>
+                        <p className={`text-black bg-white bg-opacity-50 text-lg mb-3  text-shadow-lg ${city.smalldescription.length > 100 ? 'mt-6' : 'mt-3'}`}>
                             {city.description}
                         </p>
                         <p>{`Details of ${city.city} is under construction 💔`}  </p>
