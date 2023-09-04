@@ -1,6 +1,8 @@
+
 import React, { useState } from 'react';
 import { Link as Anchor } from 'react-router-dom';
 import mt from '../assets/mt.jpg'
+
 
 export default function NavBar() {
   const [showMenu, setShowMenu] = useState(false);
@@ -11,7 +13,9 @@ export default function NavBar() {
         <div className="md:flex items-center space-x-8 h-full w-full flex-grow">
           <div className="flex items-center space-x-2">
             <img
+
               src= {mt}
+
               alt="My Tinerary Logo"
               className="h-20"
             />
@@ -26,6 +30,7 @@ export default function NavBar() {
           <div className="hidden md:flex items-center space-x-4">
             <Anchor to='/' className="text-lg font-semibold text-[#1c1c1c] hover:text-[#4f46e5]" >Home</Anchor>
             <Anchor to='/cities' className="text-lg font-semibold text-[#1c1c1c] hover:text-[#4f46e5]" >Cities</Anchor>
+
             <Anchor to='/signin' className="text-lg font-semibold text-white bg-[#4f46e5] py-2 px-6 rounded-md hover:bg-[#3d388d]">🙍‍♂️Login</Anchor>
           </div>
         </div>
@@ -35,6 +40,7 @@ export default function NavBar() {
             <Anchor to="#" className="block py-2 px-4 text-lg font-semibold text-[#1c1c1c] hover:text-[#4f46e5] mb-2">Home</Anchor>
             <Anchor to='/cities' className="block py-2 px-4 text-lg font-semibold text-[#1c1c1c] hover:text-[#4f46e5] mb-2">Cities</Anchor>
             <Anchor to='/signin' className="block py-2 px-4 text-lg font-semibold text-[#1c1c1c] hover:text-[#4f46e5] mb-2" onClick={() => setShowMenu(false)}> 🙍‍♂️Login</Anchor>
+
           </nav>
         </div>
       </div>
