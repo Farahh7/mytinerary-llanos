@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link as Anchor } from 'react-router-dom';
+import mt from '../assets/mt.jpg'
 
 export default function NavBar() {
   const [showMenu, setShowMenu] = useState(false);
@@ -10,7 +11,7 @@ export default function NavBar() {
         <div className="md:flex items-center space-x-8 h-full w-full flex-grow">
           <div className="flex items-center space-x-2">
             <img
-              src="./src/assets/mt.jpg"
+              src= {mt}
               alt="My Tinerary Logo"
               className="h-20"
             />

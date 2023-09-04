@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+
 import { Link as Anchor } from "react-router-dom"
 
 export default function CardCity({ src, alt, text, id, textCountry }) {
