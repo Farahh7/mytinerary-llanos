@@ -5,6 +5,7 @@ import { Outlet } from "react-router-dom"
 
 export default function MainLayout() {
   return (
+
     <div className="w-full flex flex-col min-h-screen"> 
       <NavBar />
       <div className="flex-grow"> 
@@ -14,8 +15,6 @@ export default function MainLayout() {
     </div>
   );
 }
-
-
 
 
 

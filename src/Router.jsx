@@ -3,13 +3,16 @@ import Home from './pages/home'
 import Cities from "./pages/Cities";
 import MainLayout from './layouts/MainLayout'
 import Error from "./pages/Error";
+
 import CityDetail from './pages/CityDetail';
 import SignIn from "./pages/SignIn";
 import SignUp from './pages/SingUp';
 
 
+
 const router = createBrowserRouter([
     { 
+
         path: '/',
         element: <MainLayout />,
         children: [
@@ -23,6 +26,7 @@ const router = createBrowserRouter([
             { path: '/city/:city_id', element: <CityDetail /> },
             //{ path: '/city/:id', element: <CityDetail /> },
              
+
             
         ] 
     }
