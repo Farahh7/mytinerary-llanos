@@ -16,6 +16,7 @@ export default function NavBar() {
 
               src= {mt}
 
+
               alt="My Tinerary Logo"
               className="h-20"
             />

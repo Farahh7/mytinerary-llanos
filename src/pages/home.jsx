@@ -8,7 +8,9 @@ import apiUrl from "../apiUrl";
 
 
 
-import NotFoundPage from './E404'; // Importa el componente NotFoundPage
+
+
+
 
 export default function Home() {
   const [data, setData] = useState([]);
