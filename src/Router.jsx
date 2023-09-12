@@ -6,6 +6,8 @@ import Error from "./pages/Error";
 import CityDetail from './pages/CityDetail';
 import SignIn from "./pages/SignIn";
 import SignUp from './pages/SingUp';
+//import Activity from './components/Activities'
+
 
 
 const router = createBrowserRouter([
@@ -17,11 +19,12 @@ const router = createBrowserRouter([
             { path: '/Cities', element: <Cities /> },
             { path: '/error404', element: <e404 /> },
             { path: '/Error', element: <Error /> },
-            { path: '/signin', element: <SignIn /> },
-            { path: '/signup', element: <SignUp /> },
-            //{ path: '/city/:id', element: <CityDetail /> },
+            { path: '/auth/signin', element: <SignIn /> },
+            { path: '/auth/signup', element: <SignUp /> },
+     
             { path: '/city/:city_id', element: <CityDetail /> },
-            //{ path: '/city/:id', element: <CityDetail /> },
+           // {path: '/activities/:itinerary_id', element: <Activity />}
+           
              
             
         ] 
