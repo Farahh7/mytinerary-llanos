@@ -7,8 +7,12 @@ import NotItineraries from "../components/NotItinerary"
 import { useDispatch, useSelector } from "react-redux"
 import city_actions from "../store/actions/cities"
 import itinerary_actions from "../store/actions/itineraries"
+
+import activity_actions from "../store/actions/activities"
+
 const { read_city } = city_actions
 const { read_itineraries_from_city } = itinerary_actions
+
 
 
 
@@ -20,6 +24,9 @@ export default function CityDetails() {
     const dispatch = useDispatch()
     const city = useSelector(store => store.cities.city)
     const itineraries = useSelector(store => store.itineraries.itineraries_from_city)
+
+    //const activities_from_itinerary = useSelector(store => store.activities.activities_from_itinerary)
+
     console.log(itineraries)
 
 
@@ -28,8 +35,11 @@ export default function CityDetails() {
 
         () => {
             dispatch(read_city({ id: city_id }));
-            dispatch(read_itineraries_from_city({ city_id }))
-        }, []
+
+            dispatch(read_itineraries_from_city({ city_id :city_id}))
+           
+        }, [dispatch, city_id]
+
     )
 
     return (
@@ -67,6 +77,10 @@ export default function CityDetails() {
                             duration={each.duration}
                             tags={each.tags}
                             photo={each.photo}
+
+                            id={each._id}
+
+
                         />
                     ))
                 ) : (

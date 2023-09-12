@@ -1,8 +1,14 @@
-import { useState } from "react"
-import Activity from "../components/Activity"
+
+import { useState, useEffect } from "react"
+import Activities from "./Activities"
 import Money from "./Money"
 
-export default function Itinerary({ name, price, duration, tags, photo, admin_id, admin_photo }) {
+
+
+
+
+export default function Itinerary({ name, price, duration, tags, photo, admin_id, admin_photo,id }) {
+
 
     const [show, setShow] = useState(false)
     const [red, setRed] = useState(false)
@@ -79,7 +85,10 @@ export default function Itinerary({ name, price, duration, tags, photo, admin_id
                         </div>
                     </div>
                 </div>
-                {show ? <Activity /> : <h1></h1>}
+
+                {show && <Activities id_itinerary={id} />}
+
+
             </div>
         </main>
     );
