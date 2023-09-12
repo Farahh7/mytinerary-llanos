@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import Display from "./Display";
 import Label from "./Label";
@@ -226,12 +227,14 @@ export default function NavBar() {
     });
   }
     
+
   return (
     <header className="h-[87px] px-10 bg-gray-200 flex justify-start items-center">
       <div className="mx-auto max-w-7xl flex justify-between items-center w-full">
         <div className="md:flex items-center space-x-8 h-full w-full flex-grow">
           <div className="flex items-center space-x-2">
             <img
+
               src={mt}
               alt="My Tinerary Logo"
               className="h-20"
@@ -296,6 +299,7 @@ export default function NavBar() {
           <div className="flex items-center space-x-2">
             <img
               src= {mt}
+
               alt="My Tinerary Logo"
               className="h-20"
             />
@@ -310,6 +314,7 @@ export default function NavBar() {
           <div className="hidden md:flex items-center space-x-4">
             <Anchor to='/' className="text-lg font-semibold text-[#1c1c1c] hover:text-[#4f46e5]" >Home</Anchor>
             <Anchor to='/cities' className="text-lg font-semibold text-[#1c1c1c] hover:text-[#4f46e5]" >Cities</Anchor>
+
             {user.mail ? (
               <div className="flex justify-end items-center">
                 <img src={user.photo} alt={user._id} className="w-10 h-10 rounded-full border-2 mr-2 border-indigo-700" />
@@ -324,12 +329,14 @@ export default function NavBar() {
             ) : (
             <Anchor to='/signin' className="text-lg font-semibold text-white bg-[#4f46e5] py-2 px-6 rounded-md hover:bg-[#3d388d]">🙍‍♂️Login</Anchor>
             )}</div>
+
         </div>
         <div className="md:hidden">
           <div className={`fixed inset-0 bg-gray-800 bg-opacity-50 ${showMenu ? 'block' : 'hidden'}`} onClick={() => setShowMenu(false)}></div>
           <nav className={`fixed right-0 top-0 bg-white w-64 p-4 transform ${showMenu ? 'translate-x-0' : 'translate-x-full'} transition-transform ease-in-out duration-300`}>
             <Anchor to="#" className="block py-2 px-4 text-lg font-semibold text-[#1c1c1c] hover:text-[#4f46e5] mb-2">Home</Anchor>
             <Anchor to='/cities' className="block py-2 px-4 text-lg font-semibold text-[#1c1c1c] hover:text-[#4f46e5] mb-2">Cities</Anchor>
+
             {user.mail ? (
               <div>
                 <Anchor to='#' className="block py-2 px-4 text-lg font-semibold text-[#1c1c1c] hover:text-[#4f46e5] mb-2" onClick={handleSignout}>Logout</Anchor>
@@ -337,9 +344,11 @@ export default function NavBar() {
             ) : (
             <Anchor to='/signin' className="block py-2 px-4 text-lg font-semibold text-[#1c1c1c] hover:text-[#4f46e5] mb-2" onClick={() => setShowMenu(false)}> 🙍‍♂️Login</Anchor>
             )}</nav>
+
         </div>
       </div>
     </header>
   );
 }
  */
+

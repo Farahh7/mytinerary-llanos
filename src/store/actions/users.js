@@ -2,6 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import apiUrl from "../../apiUrl";
 
+
 const read_users = createAsyncThunk(
     'read_users',
     async() => {
@@ -14,7 +15,7 @@ const read_users = createAsyncThunk(
         } catch (error) {
             console.log(error)
             return {
-                users: []
+    users: []
             }
         }
     }
@@ -92,4 +93,5 @@ const logout = createAsyncThunk(
 )
 
 const user_actions = { read_users, signin, signin_token, logout }
+
 export default user_actions

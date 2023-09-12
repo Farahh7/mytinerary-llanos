@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { read_cities, read_carousel } from '../store/actions/cities.js';
@@ -37,10 +38,12 @@ export default function Cities() {
         }
 
         setFilteredCities(newFilteredCities);
+
     }
 
     return (
         <div className='w-full flex flex-col items-center mb-[200px]'>
+
             <div className="bg-cover bg-center h-[30vh]  w-full flex items-center justify-center text-white text-center"
                 style={{ backgroundImage: `url('/src/assets/viajes.jpg')` }}>
                 <div>

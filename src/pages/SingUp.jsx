@@ -1,3 +1,4 @@
+
 import { useRef, useEffect, useState } from "react";
 import axios from "axios";
 import apiUrl from "../apiUrl";
@@ -174,6 +175,7 @@ console.log(store);
 
 
 /* import { useRef } from "react";
+
 import axios from "axios";
 import apiUrl from "../apiUrl";
 import { Link as Anchor } from "react-router-dom";
@@ -268,4 +270,6 @@ export default function SignUp() {
     </div>
   );
 }
+
  */
+
