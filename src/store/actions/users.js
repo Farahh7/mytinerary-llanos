@@ -15,7 +15,9 @@ const read_users = createAsyncThunk(
         } catch (error) {
             console.log(error)
             return {
-    users: []
+
+                users: []
+
             }
         }
     }
