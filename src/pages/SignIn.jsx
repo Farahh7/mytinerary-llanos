@@ -280,7 +280,6 @@ export default function FormSignIn() {
         </button>
         <Anchor to="/auth/signup" className="text-[12px] text-[#1C1C1C] pb-2">Already have an account? <span className="text-bold cursor-pointer text-blue-600 underline">Sign up</span></Anchor>
 
-
       </div>
     </div>
   );
