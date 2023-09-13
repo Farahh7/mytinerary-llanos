@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react"
 import Activities from "./Activities"
 import Money from "./Money"
@@ -8,6 +9,7 @@ import Money from "./Money"
 
 export default function Itinerary({ name, price, duration, tags, photo, admin_id, admin_photo,id }) {
 
+
     const [show, setShow] = useState(false)
     const [red, setRed] = useState(false)
 
@@ -15,6 +17,7 @@ export default function Itinerary({ name, price, duration, tags, photo, admin_id
 
     return (
         <main>
+
             <div className="flex flex-col items-center justify-center mt-5 px-4 sm:px-6 md:px-8 lg:px-10">
                 <div className="w-full max-w-screen-xl flex flex-col items-center justify-start bg-slate-100 mb-4">
                     <p className="text-3xl sm:text-4xl lg:text-5xl font-bold my-4">{name}</p>
@@ -38,10 +41,12 @@ export default function Itinerary({ name, price, duration, tags, photo, admin_id
                         <div className="flex flex-col items-center justify-start p-2.5 w-full sm:w-1/2 md:w-1/4 lg:w-1/4">
                             <p className="text-md font-bold">Price:</p>
                             <div className="flex items-center justify-center">
+
                                 <Money price={price} />
                             </div>
                         </div>
                     </div>
+
                     <div className="w-full max-w-screen-xl mt-5 py-5 flex items-center justify-between">
                         {red ? (
                             <div onClick={() => setRed(!red)}>
@@ -80,7 +85,9 @@ export default function Itinerary({ name, price, duration, tags, photo, admin_id
                         </div>
                     </div>
                 </div>
+
                 {show && <Activities id_itinerary={id} />}
+
 
             </div>
         </main>

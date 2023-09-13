@@ -19,7 +19,9 @@ export default function Display({ option, showMenu, setShowMenu }) {
         }).then((result) => {
             if (result.isConfirmed) {
                 dispatch(logout());
+
                 setShowMenu(false); 
+
             }
         });
     };

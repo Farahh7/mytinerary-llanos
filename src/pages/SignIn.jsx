@@ -1,3 +1,4 @@
+
 import React, { useRef, useState } from "react";
 import { Link as Anchor, useNavigate } from "react-router-dom";
 import google from "../assets/google.png";
@@ -278,8 +279,12 @@ export default function FormSignIn() {
           <span className="text-[14px] font-semibold ml-2">Continue with Facebook</span>
         </button>
         <Anchor to="/auth/signup" className="text-[12px] text-[#1C1C1C] pb-2">Already have an account? <span className="text-bold cursor-pointer text-blue-600 underline">Sign up</span></Anchor>
+
+
       </div>
     </div>
   );
 }
+
 ]*/
+
