@@ -4,14 +4,14 @@ import Label from "./Label";
 import { useSelector } from "react-redux";
 
 export default function NavBar() {
-  const [showMenu, setShowMenu] = useState(false); 
+  const [showMenu, setShowMenu] = useState(false);
   const option = [
     { to: "/", title: "Home" },
     { to: "/cities", title: "Cities" },
   ];
   const user = useSelector((store) => store.users.user);
 
- 
+
   const toggleMenu = () => {
     setShowMenu(!showMenu);
   };
@@ -74,14 +74,16 @@ export default function NavBar() {
         )}
       </div>
       <nav className="hidden md:w-full md:flex md:justify-between md:items-center">
-        <h1 className="flex font-bold text-[28px]
-                lg:text-[32px]
-                2xl:text-[40px]
-                min-[2500px]:text-[50px]">
-          My Tinerary
-        </h1>
+        <div className="flex items-center space-x-2">
+          <img
+            src={mt}
+            alt="My Tinerary Logo"
+            className="h-20"
+          />
+          <p className="font-sans font-bold text-2xl text-[#1c1c1c] leading-[42.56px]">My Tinerary</p>
+        </div>
         <div className="flex justify-end">
-        <Label option={option} showMenu={showMenu} setShowMenu={setShowMenu} />
+          <Label option={option} showMenu={showMenu} setShowMenu={setShowMenu} />
 
           {user.mail && (
             <div className="flex justify-end items-center">
