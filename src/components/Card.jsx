@@ -11,6 +11,7 @@ export default function Card({ src, alt, text }) {
     <p className="text-gray-700 font-semibold text-lg mt-3 leading-tight text-center">{text}</p>
     <div className="mt-3">
       <a href="/cities" className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-md">
+
         Explore Cities
       </a>
     </div>
