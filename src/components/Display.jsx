@@ -19,7 +19,7 @@ export default function Display({ option, showMenu, setShowMenu }) {
         }).then((result) => {
             if (result.isConfirmed) {
                 dispatch(logout());
-                setShowMenu(false); // Cierra el menú después de hacer clic en "Sign Out"
+                setShowMenu(false); 
             }
         });
     };
