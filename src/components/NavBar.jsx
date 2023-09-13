@@ -3,6 +3,7 @@ import { useState } from "react";
 import Display from "./Display";
 import Label from "./Label";
 import { useSelector } from "react-redux";
+import mt from '../assets/mt.jpg'
 
 export default function NavBar() {
 
