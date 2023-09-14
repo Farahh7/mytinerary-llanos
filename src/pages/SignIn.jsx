@@ -1,7 +1,9 @@
+
 import React, { useRef, useState } from "react";
 import { Link as Anchor, Navigate, useNavigate } from "react-router-dom";
 import google from "../assets/google.png";
 import facebook from "../assets/facebook.png";
+
 
 import { useDispatch, useSelector } from "react-redux";
 import Swal from "sweetalert2";
@@ -22,6 +24,7 @@ export default function SignIn() {
     };
 
     dispatch(signin({ data }))
+
 
       .then((res) => {
         if (res.payload.token) {
@@ -55,16 +58,20 @@ export default function SignIn() {
         <div className="w-full min-h-screen mt-5 flex flex-col
     lg:flex-row lg:justify-between">
           <h1 className="font-bold text-slate-200 self-center mt-14 text-[28px]
+
             md:text-[36px]
             lg:ml-[180px] lg:text-[48px]
             min-[1800px]:ml-[350px]
             min-[2300px]:ml-[500px]">My Tinerary</h1>
+
           <div className="flex flex-col items-center bg-white rounded-lg m-6 px-2 py-8
+
             md:w-1/2 md:self-center md:py-16
             lg:mx-[120px] lg:my-[100px] lg:py-10
             min-[1440px]:w-1/3 min-[1440px]:mr-[200px]
             min-[1800px]:w-1/4 min-[1800px]:mr-[350px] min-[1800px]:py-20
             min-[2300px]:mr-[500px]">
+
 
             <h1 className="mb-5 text-xl md:text-2xl font-bold">Sign in 🛩</h1>
             <form className="w-full flex flex-col items-center">
@@ -77,11 +84,13 @@ export default function SignIn() {
                   defaultValue=""
                   placeholder="Email"
                   className="w-2/3 my-2 px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
+
             focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500
             disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
             invalid:border-pink-500 invalid:text-pink-600
             focus:invalid:border-pink-500 focus:invalid:ring-pink-500
             lg:w-1/2 lg:my-4"
+
                 />
               </div>
               <div className="flex flex-col grow justify-center items-center">
@@ -92,11 +101,13 @@ export default function SignIn() {
                   id="password"
                   placeholder="Password"
                   className="w-2/3 my-2 px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
+
             focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500
             disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
             invalid:border-pink-500 invalid:text-pink-600
             focus:invalid:border-pink-500 focus:invalid:ring-pink-500
             lg:w-1/2 lg:my-4"
+
                 />
                 <i
                   className={`bi bi-eye${showPassword ? "" : "-slash"} absolute top-1/2 right-4 transform -translate-y-1/2 cursor-pointer`}
@@ -261,6 +272,8 @@ export default function FormSignIn() {
           </button>
         </form>
 
+
+
         <div className="flex items-end justify-center">
           <div className="w-[150px] text-[12px] border-b border-[#1c1c1c] h-[30px] m-2"></div>
           <p className="flex m-2">O</p>
@@ -277,12 +290,14 @@ export default function FormSignIn() {
         </button>
         <Anchor to="/auth/signup" className="text-[12px] text-[#1C1C1C] pb-2">Already have an account? <span className="text-bold cursor-pointer text-blue-600 underline">Sign up</span></Anchor>
 
+
       </div>
     </div>
   );
 }
 
 ]*/
+
 
 
 
@@ -414,8 +429,11 @@ export default function FormSignIn() {
           <span className="text-[14px] font-semibold ml-2">Continue with Facebook</span>
         </button>
         <Anchor to="/auth/signup" className="text-[12px] text-[#1C1C1C] pb-2">Already have an account? <span className="text-bold cursor-pointer text-blue-600 underline">Sign up</span></Anchor>
+
       </div>
     </div>
   );
 }
+
 ]*/
+

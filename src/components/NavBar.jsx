@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import Display from "./Display";
 import Label from "./Label";
@@ -5,7 +6,9 @@ import { useSelector } from "react-redux";
 import mt from '../assets/mt.jpg'
 
 export default function NavBar() {
+
   const [showMenu, setShowMenu] = useState(false);
+
   const option = [
     { to: "/", title: "Home" },
     { to: "/cities", title: "Cities" },
@@ -75,6 +78,7 @@ export default function NavBar() {
         )}
       </div>
       <nav className="hidden md:w-full md:flex md:justify-between md:items-center">
+
         <div className="flex items-center space-x-2">
           <img
             src={mt}
@@ -85,6 +89,7 @@ export default function NavBar() {
         </div>
         <div className="flex justify-end">
           <Label option={option} showMenu={showMenu} setShowMenu={setShowMenu} />
+
 
           {user.mail && (
             <div className="flex justify-end items-center">
@@ -104,3 +109,4 @@ export default function NavBar() {
     </header>
   );
 }
+

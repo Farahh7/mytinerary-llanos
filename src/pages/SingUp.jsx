@@ -1,3 +1,4 @@
+
 import { useRef, useEffect, useState } from "react";
 import axios from "axios";
 import apiUrl from "../apiUrl";
@@ -12,6 +13,7 @@ import Swal from "sweetalert2"
 export default function SignUp() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
+
   const name = useRef();
   const lastName = useRef();
   const country = useRef();
@@ -19,6 +21,7 @@ export default function SignUp() {
   const mail = useRef();
   const password = useRef();
   const [countryRef, setCountryRef] = useState(null);
+
   console.log(name);
   console.log(mail);
   console.log(country);
@@ -57,6 +60,7 @@ export default function SignUp() {
   }
   let store = useSelector(store => store.users)
   console.log(store);
+
 
   return (
     <div className="w-full min-h-screen mt-5 flex flex-col
@@ -102,7 +106,9 @@ export default function SignUp() {
             placeholder="Type Lastname"
           />
 
+
           <SelectCountry name={country} />
+
 
           <input
             className="w-2/3 my-2 px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
@@ -160,6 +166,7 @@ export default function SignUp() {
     </div>
   );
 }
+
 
 
 
@@ -277,3 +284,4 @@ export default function SignUp() {
   );
 }
  */
+
