@@ -7,6 +7,9 @@ export default function Display({ option, showMenu, setShowMenu }) {
     const dispatch = useDispatch();
     const user = useSelector((store) => store.users.user);
 
+    console.log(user);
+
+
     const handleSignOut = () => {
         Swal.fire({
             title: 'Are you sure?',
@@ -20,7 +23,7 @@ export default function Display({ option, showMenu, setShowMenu }) {
             if (result.isConfirmed) {
                 dispatch(logout());
 
-                setShowMenu(false); 
+                setShowMenu(false);
 
             }
         });

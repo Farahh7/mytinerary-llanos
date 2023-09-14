@@ -2,7 +2,9 @@
 import { useState } from "react"
 import countries from '../data/countrys.json' //Traigo los paises desde un archivo json
 
-export default function SelectCountry({ countryRef }) {
+
+export default function SelectCountry({ name }) {
+
     const [selectedCountry, setSelectedCountry] = useState('');
 
     const handleCountryChange = (event) => {
@@ -20,7 +22,9 @@ export default function SelectCountry({ countryRef }) {
             id="countrySelect"
             onChange={handleCountryChange}
             value={selectedCountry}
-            ref={countryRef}
+
+            ref={name}
+
         >
             <option value="" className="text-slate-400">Country</option>
             {countries.map((country, index) => (
