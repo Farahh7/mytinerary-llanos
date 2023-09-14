@@ -4,9 +4,9 @@ import apiUrl from "../../apiUrl";
 
 const read_users = createAsyncThunk(
     'read_users',
-    async() => {
+    async () => {
         try {
-            let data = await axios(apiUrl+'users')
+            let data = await axios(apiUrl + 'users')
             //console.log(data)
             return {
                 users: data.data.response
@@ -22,9 +22,9 @@ const read_users = createAsyncThunk(
 
 const signin = createAsyncThunk(
     'signin',
-    async(obj) => {
+    async (obj) => {
         try {
-            let data = await axios.post(apiUrl+'auth/signin', obj.data)
+            let data = await axios.post(apiUrl + 'auth/signin', obj.data)
             //console.log(data)
             localStorage.setItem('token', data.data.response.token)
             return {
@@ -47,11 +47,11 @@ const signin = createAsyncThunk(
 
 const signin_token = createAsyncThunk(
     'signin_token',
-    async() => {
+    async () => {
         try {
             let token = localStorage.getItem('token')
             let authorization = { headers: { 'Authorization': `Bearer ${token}` } }
-            let data = await axios.post(apiUrl+'auth/token', null, authorization)
+            let data = await axios.post(apiUrl + 'auth/token', null, authorization)
             //console.log(data)
             localStorage.setItem('token', data.data.response.token)
             return {
@@ -70,11 +70,11 @@ const signin_token = createAsyncThunk(
 
 const logout = createAsyncThunk(
     'logout',
-    async() => {
+    async () => {
         try {
             let token = localStorage.getItem('token')
             let authorization = { headers: { 'Authorization': `Bearer ${token}` } }
-            let data = await axios.post(apiUrl+'auth/signout', null, authorization)
+            let data = await axios.post(apiUrl + 'auth/signout', null, authorization)
             //console.log(data)
             localStorage.removeItem('token')
             return {
@@ -90,6 +90,21 @@ const logout = createAsyncThunk(
         }
     }
 )
-
-const user_actions = { read_users, signin, signin_token, logout }
+const register = createAsyncThunk("register", async (obj) => {
+    try {
+        console.log(obj);
+        let data = await axios.post(apiUrl + "auth/register", obj.newUser);
+        return {
+            newUser: data.data.response,
+            messages: [],
+        };
+    } catch (error) {
+        console.log(error);
+        return {
+            newUser: {},
+            messages: error.response.data.messages || [error.response.data.message],
+        };
+    }
+});
+const user_actions = { read_users, signin, signin_token, logout, register }
 export default user_actions

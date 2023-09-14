@@ -6,6 +6,7 @@ const { logout } = user_actions;
 export default function Display({ option, showMenu, setShowMenu }) {
     const dispatch = useDispatch();
     const user = useSelector((store) => store.users.user);
+    console.log(user);
 
     const handleSignOut = () => {
         Swal.fire({
@@ -19,7 +20,7 @@ export default function Display({ option, showMenu, setShowMenu }) {
         }).then((result) => {
             if (result.isConfirmed) {
                 dispatch(logout());
-                setShowMenu(false); 
+                setShowMenu(false);
             }
         });
     };

@@ -1,14 +1,17 @@
 import { useRef, useEffect, useState } from "react";
 import axios from "axios";
 import apiUrl from "../apiUrl";
-import { Link as Anchor,useNavigate } from "react-router-dom";
-import { useDispatch,useSelector } from 'react-redux'
+import { Link as Anchor, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux'
 import user_actions from '../store/actions/users'
 import SelectCountry from "../components/SelectCountry";
-const { read_users } = user_actions
+const { read_users, register } = user_actions
+import Swal from "sweetalert2"
+
 
 export default function SignUp() {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
   const name = useRef();
   const lastName = useRef();
   const country = useRef();
@@ -16,40 +19,45 @@ export default function SignUp() {
   const mail = useRef();
   const password = useRef();
   const [countryRef, setCountryRef] = useState(null);
+  console.log(name);
+  console.log(mail);
+  console.log(country);
 
-  
+
   async function handleSignUp() {
-  let data = {
-    name: name.current.value,
-    lastName: lastName.current.value,
-    country: country.current.value,
-    photo: photo.current.value ? photo.current.value : "https://www.cinemascomics.com/wp-content/uploads/2020/06/poder-darth-vader.jpg",
-    mail: mail.current.value,
-    password: password.current.value
+    let data = {
+      name: name.current.value,
+      lastName: lastName.current.value,
+      country: country.current.value,
+      photo: photo.current.value ? photo.current.value : "https://www.cinemascomics.com/wp-content/uploads/2020/06/poder-darth-vader.jpg",
+      mail: mail.current.value,
+      password: password.current.value
+
+    }
+    console.log(data);
+    let responseDispatch = dispatch(register({ newUser: data }))
+      .then(res => {
+        console.log(res)
+        if (res.payload.newUser.name) {
+          Swal.fire({
+            icon: 'success',
+            title: 'User created!',
+          })
+          navigate('/auth/signin')
+        } else if (res.payload.messages.length > 0) {
+          let html = res.payload.messages.map(each => `<p>${each}</p>`).join('')
+          Swal.fire({
+            title: 'Something went wrong!',
+            icon: 'error',
+            html
+          })
+        }
+      })
+      .catch(err => console.log(err))
   }
-  let responseDispatch = dispatch(register({ data }))
-    .then(res => {
-      console.log(res)
-      if (res.payload.success === true) {
-        Swal.fire({
-          icon: 'success',
-          title: 'User created!',
-        })
-        navigate('/auth/signin')
-      } else if (res.payload.messages.length > 0) {
-        let html = res.payload.messages.map(each => `<p>${each}</p>`).join('')
-        Swal.fire({
-          title: 'Something went wrong!',
-          icon: 'error',
-          html
-        })
-      }
-    })
-    .catch(err => console.log(err))
-}
-let store = useSelector(store => store.users)
-console.log(store);
-  
+  let store = useSelector(store => store.users)
+  console.log(store);
+
   return (
     <div className="w-full min-h-screen mt-5 flex flex-col
     lg:flex-row lg:justify-between">
@@ -93,9 +101,9 @@ console.log(store);
             id="lastName"
             placeholder="Type Lastname"
           />
-          
-          <SelectCountry countryRef={countryRef} setCountryRef={setCountryRef} />
-          
+
+          <SelectCountry name={country} />
+
           <input
             className="w-2/3 my-2 px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
             focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500
